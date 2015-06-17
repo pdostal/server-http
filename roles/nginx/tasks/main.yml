@@ -1,8 +1,8 @@
 - set_fact:
-    nginx_conf: /usr/local/etc/nginx/
+    nginx_conf: /usr/local/etc/nginx
   when: ansible_distribution == 'FreeBSD'
 - set_fact:
-    nginx_conf: /etc/nginx/
+    nginx_conf: /etc/nginx
   when: ansible_distribution == 'Debian'
 
 - name: install nginx (Debian)
@@ -26,9 +26,9 @@
   notify: restart nginx
 
 - name: Create conf.d directory
-  file: path={{ nginx_conf }}conf.d state=directory
+  file: path={{ nginx_conf }}/conf.d state=directory
 - name: Create sites-enabled directory
-  file: path={{ nginx_conf }}sites-enabled state=directory
+  file: path={{ nginx_conf }}/sites-enabled state=directory
 
 - name: Create log directory
   file: path=/var/log/nginx state=directory
@@ -36,9 +36,9 @@
   file: path=/var/log/nginx*.log state=absent
 
 - name: Paste nginx config
-  template: src=nginx.conf dest={{ nginx_conf }}nginx.conf
+  template: src=nginx.conf dest={{ nginx_conf }}/nginx.conf
   notify: reload nginx
-  
+
 - name: Remove default vhost
-  file: path={{ nginx_conf }}sites-enabled/default state=absent
+  file: path={{ nginx_conf }}/sites-enabled/default state=absent
   notify: reload nginx
