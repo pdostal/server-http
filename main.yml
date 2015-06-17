@@ -1,6 +1,6 @@
 - name: http server
   hosts: all
   sudo: true
-  tasks:
+  roles:
   - { role: apache, tags: apache, when: ansible_hostname in groups.apache }
   - { role: nginx, tags: nginx, when: ansible_hostname in groups.nginx }
