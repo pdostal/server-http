@@ -1,0 +1,16 @@
+- set_fact:
+    apache_conf: /etc/apache2
+  when: ansible_distribution == 'Debian'
+
+- name: install apache2 (Debian)
+  notify: restart apache2
+  apt: pkg=apache2 state=present
+  when: ansible_distribution == 'Debian'
+
+- name: Paste apache config
+  template: src=nginx.conf dest={{ nginx_conf }}/apache2.conf
+  notify: reload apache2
+
+- name: Remove default vhost
+  file: path={{ apache_conf }}/sites-enabled/000-default.conf state=absent
+  notify: reload apache2
