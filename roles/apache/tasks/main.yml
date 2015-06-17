@@ -11,6 +11,9 @@
   template: src=apache2.conf dest={{ apache_conf }}/apache2.conf
   notify: reload apache2
 
+- name: Remove ports config
+  file: path={{ apache_conf }}/ports.conf state=absent
+  notify: reload apache2
 - name: Remove default vhost
   file: path={{ apache_conf }}/sites-enabled/000-default.conf state=absent
   notify: reload apache2
