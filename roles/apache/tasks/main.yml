@@ -14,3 +14,6 @@
 - name: Remove default vhost
   file: path={{ apache_conf }}/sites-enabled/000-default.conf state=absent
   notify: reload apache2
+- name: Remove vhost log config
+  file: path={{ apache_conf }}/conf-enabled/other-vhosts-access-log.conf state=absent
+  notify: reload apache2
