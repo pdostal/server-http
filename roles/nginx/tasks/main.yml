@@ -32,8 +32,6 @@
 
 - name: Create log directory
   file: path=/var/log/nginx state=directory
-- name: Remove olg logs
-  file: path=/var/log/nginx*.log state=absent
 
 - name: Paste nginx config
   template: src=nginx.conf dest={{ nginx_conf }}/nginx.conf
