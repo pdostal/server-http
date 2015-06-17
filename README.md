@@ -1,2 +1,2 @@
-# server-nginx
-Ansible nginx base tasks
+# server : http
+Ansible http server base tasks

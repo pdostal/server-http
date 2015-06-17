@@ -1,3 +1,6 @@
+[apache]
 cucumber
+
+[nginx]
 rhubarb
 sorrel
