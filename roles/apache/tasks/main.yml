@@ -8,7 +8,7 @@
   when: ansible_distribution == 'Debian'
 
 - name: Paste apache config
-  template: src=nginx.conf dest={{ nginx_conf }}/apache2.conf
+  template: src=nginx.conf dest={{ apache_conf }}/apache2.conf
   notify: reload apache2
 
 - name: Remove default vhost
