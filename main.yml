@@ -5,3 +5,4 @@
   - { role: apache, tags: apache, when: ansible_hostname in groups.apache }
   - { role: nginx, tags: nginx, when: ansible_hostname in groups.nginx }
   - { role: mysql, tags: mysql, when: ansible_hostname in groups.mysql }
+  - { role: php, tags: php, when: ansible_hostname in groups.php }

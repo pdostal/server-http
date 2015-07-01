@@ -1,0 +1,14 @@
+- set_fact:
+    nginx_conf: /usr/local/etc/nginx
+  when: ansible_distribution == 'FreeBSD'
+- set_fact:
+    nginx_conf: /etc/nginx
+  when: ansible_distribution == 'Debian'
+
+- name: install mysql (Debian)
+  when: ansible_distribution == 'Debian'
+  apt: pkg={{ item }} state=present force=yes
+  with_items:
+  - php5-fpm
+  - php5-curl
+  - php5-mysql
