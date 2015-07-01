@@ -12,3 +12,10 @@
   - php5-fpm
   - php5-curl
   - php5-mysql
+
+- name: Paste php-fpm config
+  template: src=php-fpm.conf dest=/etc/php5/fpm/php-fpm.conf
+  notify: restart php5-fpm
+- name: Paste pool.d/www config
+  template: src=www.conf dest=/etc/php5/fpm/pool.d/www.conf
+  notify: restart php5-fpm
