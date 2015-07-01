@@ -4,3 +4,6 @@ cucumber
 [nginx]
 rhubarb
 sorrel
+
+[mysql]
+sorrel
