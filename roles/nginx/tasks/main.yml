@@ -11,7 +11,7 @@
   notify: restart nginx
 - name: install nginx (FreeBSD)
   when: ansible_distribution == 'FreeBSD'
-  pkgng: name=nginx-extras state=present
+  pkgng: name=nginx state=present
   notify: restart nginx
 - name: enable nginx service
   when: ansible_distribution == 'FreeBSD'
